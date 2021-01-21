@@ -158,6 +158,7 @@ public class Snug : MVRScript {
                 foreach (var fc in containingAtom.freeControllers) {
                     if (fc == _personLHandController || fc == _personRHandController) continue;
                     if (!fc.canGrabPosition && !fc.canGrabRotation) continue;
+                    if (!fc.name.EndsWith("Control")) continue;
                     var state = new FreeControllerV3Snapshot { canGrabPosition = fc.canGrabPosition, canGrabRotation = fc.canGrabRotation };
                     _previousState[fc] = state;
                     fc.canGrabPosition = false;
